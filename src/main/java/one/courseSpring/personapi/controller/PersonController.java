@@ -16,7 +16,7 @@ public class PersonController {
 
     @GetMapping
     public String all() {
-        return "Api";
+        return "Teste Api";
     }
 
 
