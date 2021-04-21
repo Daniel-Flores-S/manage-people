@@ -20,10 +20,15 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @GetMapping
+    public String createPerson() {
+        return "Eduardo È Gay";
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
-        return  personService.createPerson(personDTO);
+    public MessageResponseDTO createPerson(@RequestBody @Valid Person person) {
+        return  personService.createPerson(person);
     }
 
 
