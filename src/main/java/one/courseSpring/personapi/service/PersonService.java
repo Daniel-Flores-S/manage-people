@@ -21,11 +21,8 @@ public class PersonService {
 
 
     public MessageResponseDTO createPerson(Person person) {
-        Person savedPerson = personRepository.save(person);
-        return  MessageResponseDTO
-                .builder()
-                .message("Created person with ID: "+ savedPerson.getId())
-                .build();
+        Person savedToPerson = personRepository.save(person);
+        return createMethodResponse(savedToPerson.getId(), "Created person with ID ");
     }
 
     public List<Person> getAll() {
@@ -40,6 +37,21 @@ public class PersonService {
     public void personDelete(Long id) throws PersonNotFoundException {
         verifyIfExists(id);
         personRepository.deleteById(id);
+    }
+
+    public MessageResponseDTO updateById(Long id, Person person) throws PersonNotFoundException {
+        verifyIfExists(id);
+
+        Person personToUpdate = personRepository.save(person);
+        return createMethodResponse(personToUpdate.getId(), "Updated person with ID ");
+    }
+
+
+    private MessageResponseDTO createMethodResponse(Long id, String message) {
+        return MessageResponseDTO
+                .builder()
+                .message(message + id)
+                .build();
     }
 
     private Person verifyIfExists(Long id) throws PersonNotFoundException {
