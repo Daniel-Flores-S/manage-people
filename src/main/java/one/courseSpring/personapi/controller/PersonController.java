@@ -7,6 +7,7 @@ import one.courseSpring.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,16 +21,14 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping
-    public String createPerson() {
-        return "Eduardo È Gay";
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPerson(@RequestBody @Valid Person person) {
         return  personService.createPerson(person);
     }
 
-
+    @GetMapping
+    public List<Person> selectAll() {
+        return personService.getAll();
+    }
 }
