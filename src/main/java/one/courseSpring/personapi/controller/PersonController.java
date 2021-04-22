@@ -3,6 +3,7 @@ package one.courseSpring.personapi.controller;
 import one.courseSpring.personapi.dto.request.PersonDTO;
 import one.courseSpring.personapi.dto.response.MessageResponseDTO;
 import one.courseSpring.personapi.entity.Person;
+import one.courseSpring.personapi.exception.PersonNotFoundException;
 import one.courseSpring.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,17 @@ public class PersonController {
     }
 
     @GetMapping("/{personId}")
-    public ResponseEntity<Person> getById(@PathVariable Long personId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Person getById(@PathVariable Long personId) throws PersonNotFoundException {
         return personService.getById(personId);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePerson(@PathVariable Long id) throws PersonNotFoundException {
+            personService.personDelete(id);
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package one.courseSpring.personapi.service;
 
 import one.courseSpring.personapi.dto.response.MessageResponseDTO;
 import one.courseSpring.personapi.entity.Person;
+import one.courseSpring.personapi.exception.PersonNotFoundException;
 import one.courseSpring.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,13 +32,19 @@ public class PersonService {
         return  personRepository.findAll();
     }
 
-    public ResponseEntity<Person> getById(Long personId) {
-        Optional<Person> person = personRepository.findById(personId);
+    public Person getById(Long personId) throws PersonNotFoundException {
+        Person person = verifyIfExists(personId);
+        return person;
+    }
 
-        if (person.isPresent()) {
-            return ResponseEntity.ok(person.get());
-        }
-        return ResponseEntity.notFound().build();
+    public void personDelete(Long id) throws PersonNotFoundException {
+        verifyIfExists(id);
+        personRepository.deleteById(id);
+    }
+
+    private Person verifyIfExists(Long id) throws PersonNotFoundException {
+        return personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
 }
