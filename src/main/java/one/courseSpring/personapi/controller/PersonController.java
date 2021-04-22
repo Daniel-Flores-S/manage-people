@@ -6,6 +6,7 @@ import one.courseSpring.personapi.entity.Person;
 import one.courseSpring.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -28,7 +29,13 @@ public class PersonController {
     }
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Person> selectAll() {
         return personService.getAll();
+    }
+
+    @GetMapping("/{personId}")
+    public ResponseEntity<Person> getById(@PathVariable Long personId) {
+        return personService.getById(personId);
     }
 }
