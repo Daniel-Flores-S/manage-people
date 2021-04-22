@@ -1,5 +1,6 @@
 package one.courseSpring.personapi.controller;
 
+import lombok.AllArgsConstructor;
 import one.courseSpring.personapi.dto.request.PersonDTO;
 import one.courseSpring.personapi.dto.response.MessageResponseDTO;
 import one.courseSpring.personapi.entity.Person;
@@ -15,13 +16,9 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
     private PersonService personService;
-
-    @Autowired
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -1,5 +1,6 @@
 package one.courseSpring.personapi.service;
 
+import lombok.AllArgsConstructor;
 import one.courseSpring.personapi.dto.response.MessageResponseDTO;
 import one.courseSpring.personapi.entity.Person;
 import one.courseSpring.personapi.exception.PersonNotFoundException;
@@ -11,13 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("PersonService")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
     private PersonRepository personRepository;
 
-    @Autowired
+    /*@Autowired
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
-    }
+    }*/
 
 
     public MessageResponseDTO createPerson(Person person) {
