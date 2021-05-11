@@ -1,21 +1,12 @@
 <h2>Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot</h2>
 
-Nesta live coding vamos desenvolver um pequeno sistema para o gerenciamento de pessoas de uma empresa através de uma API REST, criada com o Spring Boot.
+Sistema para o gerenciamento de pessoas de uma empresa através de uma API REST, criada com o Spring Boot.
 
-Durante a sessão, serão desenvolvidos e abordados os seguintes tópicos:
-
-* Setup inicial de projeto com o Spring Boot Initialzr 
-* Criação de modelo de dados para o mapeamento de entidades em bancos de dados
-* Desenvolvimento de operações de gerenciamento de usuários (Cadastro, leitura, atualização e remoção de pessoas de um sistema).
+* Spring Boot Initialzr
+* Gerenciamento de usuários (Cadastro, leitura, atualização e remoção de pessoas de um sistema).
 * Relação de cada uma das operações acima com o padrão arquitetural REST, e a explicação de cada um dos conceitos REST envolvidos durante o desenvolvimento do projeto.
 * Desenvolvimento de testes unitários para validação das funcionalidades
 * Implantação do sistema na nuvem através do Heroku
-
-Para executar o projeto no terminal, digite o seguinte comando:
-
-```shell script
-mvn spring-boot:run 
-```
 
 Visualizar a execução do projeto Heroku:
 
@@ -24,7 +15,7 @@ https://course-api-rest.herokuapp.com/
 ```
 
 
-São necessários os seguintes pré-requisitos para a execução do projeto desenvolvido durante a aula:
+São necessários os seguintes pré-requisitos para a execução do projeto desenvolvido:
 
 * Java 11 ou versões superiores.
 * Maven 3.6.3 ou versões superiores.
